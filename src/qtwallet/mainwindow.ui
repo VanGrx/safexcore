@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>84</width>
+      <height>83</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QRadioButton" name="radioTestNet">
+       <property name="text">
+        <string>Test Net</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioStageNet">
+       <property name="text">
+        <string>Stage Net</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioMainNet">
+       <property name="text">
+        <string>Main Net</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>150</y>
+      <width>91</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start the wallet</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>init_wallet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>init_wallet()</slot>
+ </slots>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

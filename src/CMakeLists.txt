@@ -132,6 +132,7 @@ endif()
 add_subdirectory(cryptonote_protocol)
 if(NOT IOS)
   add_subdirectory(simplewallet)
+  add_subdirectory(qtwallet)
   if (BUILD_ADVANCED_WALLET)
     add_subdirectory(advancedwallet) #disable advanced wallet until it is fully verified
   endif()
