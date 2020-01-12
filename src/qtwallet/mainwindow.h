@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "simplewallet.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,5 +22,8 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    int m_argc;
+    char** m_argv;
+    cryptonote::simple_wallet m_sw;
 };
 #endif // MAINWINDOW_H
