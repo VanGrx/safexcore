@@ -35,12 +35,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 set(qtwallet_sources
-  simplewallet.cpp simplewallet_safex.cpp simplewallet_common.cpp mainwindow.cpp mainwindow.ui)
+  main.cpp mainwindow.cpp mainwindow.ui)
 
 set(qtwallet_headers)
 
 set(qtwallet_private_headers
-  simplewallet.h
   mainwindow.h)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
@@ -54,6 +53,7 @@ safex_add_executable(qtwallet
 target_link_libraries(qtwallet
   PRIVATE
     wallet
+    wallet_api
     rpc_base
     cryptonote_core
     cncrypto

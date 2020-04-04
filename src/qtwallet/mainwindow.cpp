@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "wallet/api/wallet_api.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,14 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow), m_argc(argc)
+    , ui(new Ui::MainWindow)
 {
-    m_argv = (char**)malloc(argc*sizeof(char*));
-
-    for(int i=0;i<argc;i++){
-        m_argv[i] = (char*)malloc(20*sizeof(char));
-        m_argv[i] = argv[i];
-    }
 
     ui->setupUi(this);
 }
@@ -26,40 +21,37 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    for(int i=0; i<m_argc; i++)
-      free(m_argv[i]);
-    free(m_argv);
 }
 
 
 void MainWindow::init_wallet(){
 
-  //Select network
-//  m_argc++;
-//  m_argv = (char**)realloc(m_argv,m_argc*sizeof(char*));
-//  m_argv[m_argc-1] = (char*)malloc(20*sizeof(char));
-//  strcpy(m_argv[m_argc-1], std::string{"--testnet"}.c_str());
+  auto path = "/home/igor/workarea/qt_wallet_test/test";
+  std::string password = ui->lineEdit_2->text().toStdString();
+  auto language = "english";
+  auto nettype = true;
+  auto daemonAddress = "127.0.0.1:29393";
 
-  //Open wallet file
-  m_argc++;
-  m_argv = (char**)realloc(m_argv,m_argc*sizeof(char*));
-  m_argv[m_argc-1] = (char*)malloc(20*sizeof(char));
-  strcpy(m_argv[m_argc-1], std::string{"--wallet-file"}.c_str());
-  m_argc++;
-  m_argv = (char**)realloc(m_argv,m_argc*sizeof(char*));
-  m_argv[m_argc-1] = (char*)malloc(100*sizeof(char));
-  strcpy(m_argv[m_argc-1], std::string{"/home/vangrx/workarea/safexcore/build/debug/bin/lago"}.c_str());
+  auto manager = Safex::WalletManagerFactory::getWalletManager();
+  if (manager->walletExists(path)) {
+      return;
+  }
 
-  //Password
-  m_argc++;
-  m_argv = (char**)realloc(m_argv,m_argc*sizeof(char*));
-  m_argv[m_argc-1] = (char*)malloc(20*sizeof(char));
-  strcpy(m_argv[m_argc-1], std::string{"--password"}.c_str());
+  auto wallet_ = manager->createWallet(path, password, language,nettype);
 
-  m_argc++;
-  m_argv = (char**)realloc(m_argv,m_argc*sizeof(char*));
-  m_argv[m_argc-1] = (char*)malloc(20*sizeof(char));
-  strcpy(m_argv[m_argc-1], std::string{"x"}.c_str());
+  if (!wallet_) {
+      return;
+  }
 
-  cryptonote::simple_wallet::init_from_qt(m_argc,m_argv, m_sw);
+  if (!wallet_->errorString().empty()) {
+      return;
+  }
+
+  if (!wallet_->init(daemonAddress)) {
+      return;
+  }
+
+  wallet_->setTrustedDaemon(true);
+  wallet_->startRefresh();
+  return;
 }

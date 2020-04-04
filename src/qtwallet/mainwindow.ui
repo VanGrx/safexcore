@@ -19,7 +19,7 @@
      <rect>
       <x>30</x>
       <y>30</y>
-      <width>84</width>
+      <width>95</width>
       <height>83</height>
      </rect>
     </property>
@@ -59,7 +59,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="initButton">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -104,7 +104,7 @@
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="fileLocationEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -114,7 +114,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="passwordEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -128,22 +128,11 @@
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>initButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>init_wallet()</slot>
