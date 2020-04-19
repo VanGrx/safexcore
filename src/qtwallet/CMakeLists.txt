@@ -35,12 +35,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 set(qtwallet_sources
-  main.cpp mainwindow.cpp mainwindow.ui)
+  main.cpp stackedwidget.cpp qwallet.cpp stackedwidget.ui)
 
 set(qtwallet_headers)
 
-set(qtwallet_private_headers
-  mainwindow.h)
+set(qtwallet_private_headers qwallet.h
+  stackedwidget.h)
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
