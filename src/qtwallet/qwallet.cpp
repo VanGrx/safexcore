@@ -10,15 +10,15 @@ QWallet::QWallet()
 status_t QWallet::initWallet(const std::string& path, const std::string& password, const std::string& daemonAddress){
 
     auto language = "english";
-    auto nettype = true;
+    Safex::NetworkType nettype = Safex::NetworkType::TESTNET;
 
 
     auto manager = Safex::WalletManagerFactory::getWalletManager();
     if (manager->walletExists(path)) {
-        return std::make_pair(0, "Wallet exists");
+        return std::make_pair(1, "Wallet exists");
     }
 
-    auto wallet_ = manager->createWallet(path, password, language, nettype);
+    wallet_ = manager->createWallet(path, password, language, nettype);
 
     if (!wallet_) {
         return std::make_pair(1, "Could not create the wallet!");

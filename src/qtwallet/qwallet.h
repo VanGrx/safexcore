@@ -2,6 +2,7 @@
 #define QWALLET_H
 
 #include <string>
+#include "wallet/api/wallet_api.h"
 
 typedef std::pair<int, std::string> status_t;
 
@@ -9,6 +10,8 @@ class QWallet
 {
 public:
     QWallet();
+
+    Safex::Wallet* wallet_;
 
     status_t initWallet(const std::string& path, const std::string& password, const std::string& daemonAddress);
 
