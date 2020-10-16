@@ -6,18 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>923</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>StackedWidget</string>
   </property>
+  <property name="currentIndex">
+   <number>0</number>
+  </property>
   <widget class="QWidget" name="loginPage">
    <widget class="QLabel" name="statusLabel">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>410</x>
       <y>90</y>
       <width>67</width>
       <height>17</height>
@@ -30,7 +33,7 @@
    <widget class="QLineEdit" name="passwordEdit">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>390</x>
       <y>40</y>
       <width>113</width>
       <height>25</height>
@@ -40,7 +43,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>380</x>
       <y>170</y>
       <width>131</width>
       <height>25</height>
@@ -48,6 +51,34 @@
     </property>
     <property name="text">
      <string>Create Wallet</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>170</y>
+      <width>131</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Wallet</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="statusPage">
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>210</y>
+      <width>531</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>24</number>
     </property>
    </widget>
   </widget>
@@ -71,8 +102,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>StackedWidget</receiver>
+   <slot>openWallet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>605</x>
+     <y>182</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>461</x>
+     <y>285</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>initWallet()</slot>
+  <slot>openWallet()</slot>
  </slots>
 </ui>

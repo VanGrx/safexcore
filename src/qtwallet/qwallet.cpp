@@ -1,4 +1,5 @@
 #include "qwallet.h"
+#include "qopenwallettask.h"
 #include "wallet/api/wallet_api.h"
 
 QWallet::QWallet()
@@ -36,5 +37,15 @@ status_t QWallet::initWallet(const std::string& path, const std::string& passwor
     wallet_->startRefresh();
 
     return std::make_pair(0, "Wallet created");
+
+}
+
+status_t QWallet::openWallet(const std::string& path, const std::string& password, const std::string& daemonAddress){
+
+    QOpenWalletTask *qopen = new QOpenWalletTask(wallet_, path, password, daemonAddress);
+
+    qopen->start();
+
+    return std::make_pair(0, "Wallet opened");
 
 }

@@ -19,10 +19,18 @@ public:
 
 public slots:
     void initWallet();
+    void openWallet();
 
 private:
     Ui::StackedWidget *ui;
     QWallet mQWallet;
+
+
+    enum WidgetIndex {
+        WIDGET_LOGIN = 0,
+        WIDGET_STATUS_BAR,
+        WIDGET_MAIN_WINDOW
+    };
 };
 
 #endif // STACKEDWIDGET_H

@@ -14,6 +14,7 @@ public:
     Safex::Wallet* wallet_;
 
     status_t initWallet(const std::string& path, const std::string& password, const std::string& daemonAddress);
+    status_t openWallet(const std::string& path, const std::string& password, const std::string& daemonAddress);
 
 };
 
