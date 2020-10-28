@@ -40,7 +40,7 @@ void StackedWidget::openWallet(){
 
     this->setCurrentIndex(WIDGET_STATUS_BAR);
 
-    auto path = "/home/igor/workarea/testnet-global/wallet_01.bin";
+    auto path = "/home/igor/Workspace/Safex/localnet-testnet-stagenet/testnet-global/wallet_01.bin";
     std::string password = ui->passwordEdit->text().toStdString();
     auto daemonAddress = "127.0.0.1:29393";
 

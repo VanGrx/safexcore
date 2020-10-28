@@ -10,9 +10,9 @@ class QOpenWalletTask : public QThread
     Q_OBJECT
 
 public:
-    QOpenWalletTask(){};
+    QOpenWalletTask(){}
 
-    QOpenWalletTask(Safex::Wallet* wallet_, const std::string& path_, const std::string& password_, const std::string& daemonAddress_):wallet{wallet_}, path{path_}, password{password_}, daemonAddress{daemonAddress_}{};
+    QOpenWalletTask(Safex::Wallet* wallet_, const std::string& path_, const std::string& password_, const std::string& daemonAddress_):wallet{wallet_}, path{path_}, password{password_}, daemonAddress{daemonAddress_}{}
 
     void run();
     // Define signal:
