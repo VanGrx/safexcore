@@ -1,15 +1,31 @@
+![Safex-Foundation](https://user-images.githubusercontent.com/23055200/110654370-5e40b380-81be-11eb-959b-0a8a18cfbd4c.png)
 # Safex Project
 
+Safexcore is the nucleus of the Safex project. It contains everything that is needed if You want to:
+* Run a node on the blockchain
+* Run a wallet-cli from terminal
+* Run a wallet RPC server
+* Build wallet API library for Your endpoint
 
-## Releases
-
-Network has performed hard fork 6 with Fix for token overflow issue, Wallet fix and other bug fixes. Current hard fork ready release of Ubuntu, Windows and Mac safexd node binaries and source code is available [here](https://github.com/safex/safexcore/releases).
+## Build and test status
 
 Build | Test 
 ------|------
 ![](https://github.com/safex/safexcore/workflows/Ubuntu%2018.04%20Build/badge.svg?branch=master) | ![](https://github.com/safex/safexcore/workflows/Ubuntu%2018.04%20Test/badge.svg?branch=master)
 ![](https://github.com/safex/safexcore/workflows/Mac%20Build/badge.svg?branch=master) | ![](https://github.com/safex/safexcore/workflows/Mac%20Test/badge.svg?branch=master)
 ![](https://github.com/safex/safexcore/workflows/Windows%20Build/badge.svg?branch=master) | 
+
+## Hardforks
+
+Hardfork | Block height | Description 
+------|------|------
+1 | 1 | Init of the blockchain
+2 | 61660 | Allowed less block reward
+3 | 92200 | Version 2 of difficulty calculation
+4 | 330000 | RandomSFX minning algorithm
+5 | 335252 | Change miner dust handling
+6 | 354100 | Token overflow bugfix
+7 | 605700 | Safex marketplace functiionality 
 
 ## Build Instructions
 
@@ -75,15 +91,13 @@ $ git clone --recursive https://github.com/safex/safexcore.git
 ```
 To build a debug version run:
 ```
-make -j <Your number of cores> debug-all > build.log
+make -j <Your number of cores> debug-all
 ```
-to use all cores.
 
 To build a release version run:
 ```
-make -j <Your number of cores> release-all > build.log
+make -j <Your number of cores> release-all
 ```
-to use all cores.
 
 ### Docker
 
@@ -106,7 +120,7 @@ To test the code, run:
 
 ```
 $ cd build/debug/tests
-$ ctest -j <Your number of cores> -VV > tests.log
+$ ctest -j <Your number of cores> -VV
 ```
 
 ### On Windows:
@@ -173,6 +187,34 @@ application.
 
 * The resulting executables can be found in `build/release/bin`
 
+**Building for Windows on Linux**
+
+It is possible to build Windows binaries on Linux. Additional dependencies that are needed:
+
+```
+$ sudo apt update && sudo apt install python3 g++-mingw-w64-x86-64 wine1.6 bc
+```
+
+After following Linux build instructions, instead of build for Linux use this command:
+
+```
+make depends target=x86_64-w64-mingw32
+```
+
+**Building libwallet**
+
+
+After following all steps for Your platform, execute:
+
+```
+make libwallet-build
+```
+For Linux/Mac or
+```
+make libwallet-build-windows
+```
+for Windows.
+
 ## Running
 
 Built binaries are located in `build/debug/bin` and/or `build/release/bin`, depending upon which build was used.
@@ -180,23 +222,23 @@ To run Ubuntu 18.04 statically built binaries on another machine, `libnorm1` and
 
 To run the node:
 ```
-$ ./build/debug/bin/safexd --testnet
+$ ./build/debug/bin/safexd
 ```
 
 To run the wallet:
 ```
-$ /path/to/binaries/safex-wallet-cli --testnet <other wallet parameters>
+$ /path/to/binaries/safex-wallet-cli <other wallet parameters>
 ```
 
 To list all wallet parameters use:
 ```
-$ /path/to/binaries/safex-wallet-cli --testnet --help
+$ /path/to/binaries/safex-wallet-cli --help
 ```
 
 ---
 
 <br/><br/><br/>
-Copyright (c) 2018 The Safex Project.
+Copyright (c) 2021 The Safex Project.
 
 Portions Copyright (c) 2014-2018 The Monero Project.
 
