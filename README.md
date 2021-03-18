@@ -1,4 +1,4 @@
-![Safex-Foundation](https://user-images.githubusercontent.com/23055200/110654370-5e40b380-81be-11eb-959b-0a8a18cfbd4c.png)
+![Safex-Foundation](https://github.com/safex/twmwallet/blob/sendreceive/src/img/safex-home-multi.png)
 # Safex Project
 
 Safexcore is the nucleus of the Safex project. It contains everything that is needed if You want to:
