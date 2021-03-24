@@ -493,7 +493,15 @@ namespace tools
           epee::string_tools::hex_to_pod(item.offer_id, offer_hash);
           crypto::hash price_peg_hash{};
           epee::string_tools::hex_to_pod(item.price_peg_id, price_peg_hash);
-          offers.emplace_back(item.title, item.quantity, item.price, item.description, offer_hash, item.seller, item.active,item.seller_address,item.price_peg_used,price_peg_hash,item.min_sfx_price);
+
+          cryptonote::address_parse_info info = AUTO_VAL_INIT(info);
+          if (!cryptonote::get_account_address_from_str_or_url(info, this->nettype(),item.seller_address))
+          {
+              LOG_ERROR("failed to parse address");
+              continue;
+          }
+
+          offers.emplace_back(item.title, item.quantity, item.price, item.description, offer_hash, item.seller, item.active,info.address,item.price_peg_used,price_peg_hash,item.min_sfx_price);
       }
 
       return offers;
