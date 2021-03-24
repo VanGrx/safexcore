@@ -140,7 +140,7 @@ namespace cryptonote
             std::string offer_id;
             std::string price_peg_id;
             std::string seller;
-            cryptonote::account_public_address seller_address;
+            std::string seller_address;
             uint64_t height;
 
         BEGIN_KV_SERIALIZE_MAP()
